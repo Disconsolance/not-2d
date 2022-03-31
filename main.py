@@ -1,7 +1,9 @@
 import random
 import string
-from PIL import Image, ImageDraw, ImageSequence, ImageFont
 import io
+import os
+from PIL import Image, ImageDraw, ImageSequence, ImageFont
+
 
 # Input
 IMG = "example.gif" # input gif
@@ -14,13 +16,14 @@ LINES=3
 STRINGCHARLIST = "%$!?/.=+-@:&\\" + string.hexdigits #chars, picks random from string
 POINTERCHARLIST = string.digits + "ABCDEF"
 
-# Text settings
+# Text
 STRINGMIN=3 
 STRINGMAX=16 #MAX string length
 
-# Font settings
+# Font
+FONTFILE="dos.ttf"
 FONTSIZE=40
-FONT = ImageFont.truetype("dos.ttf", FONTSIZE, encoding="unic") #font for text
+
 
 
 # Placement
@@ -29,7 +32,7 @@ STEPDOWN = 15 # How far from the top border to draw text
 LINESTEP = FONTSIZE # How much pixels to go down for each new line
 OFFSET = 2 # How much pixels to offset the shadow (x-2, y+2)
 
-# Nerd stuff
+# Factor
 FONTSIZEFACTOR=1.6 # OPTIONAL: How tall is a large character in pixels in comparison to FONTSIZE .
                    # (e.g. if "8" is 25 pixels tall with a font size of 40: 40/25 = 1.6). 
                    # This is (not neccesarily) needed for config checks.
@@ -47,7 +50,9 @@ def ConfigCheck(img):
         Fatal=True
     if STEPDOWN+LINES*(FONTSIZE/FONTSIZEFACTOR)+(LINES-1)*(int(LINESTEP/LINESTEPFACTOR)) > h: # Calculate total height of text
         print("Not all lines fit or do not fit fully.")
-
+    if os.path.isdir("out") == False:
+        print("Created an \"out\" folder")
+        os.mkdir("out") 
     if Fatal == True:
         exit(1)
 
@@ -72,6 +77,7 @@ def GenerateRandomPointer(len):
 
 
 def AddText(path):
+    FONT = ImageFont.truetype(FONTFILE, FONTSIZE, encoding="unic")
     frames = []
     im = Image.open(f"in/{path}")
     ConfigCheck(im)
