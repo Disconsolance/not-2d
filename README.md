@@ -32,6 +32,7 @@ Output \
 |--------|-----|------|-------------|
 | Input  | IMG | string | Image filename |
 | Generation | GenPointer | bool | Use GenerateRandomPointer instead of GenerateRandomString |
+| Generation | DrawShadow | bool | Whether or not to draw a shadow to text |
 | Generation | LINES | int | How many lines to draw |
 | Chars | STRINGCHARLIST | string | Characters used by GenerateRandomString |
 | Chars | POINTERCHARLIST | string | Characters used by GenerateRandomPointer |

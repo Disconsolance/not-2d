@@ -10,6 +10,7 @@ IMG = "example.gif" # input gif
 
 # Generation
 GenPointer=False # TO generate a random string from POINTERCHARLIST, rather than STRINGCHARLIST
+DrawShadow=True
 LINES=3 
 
 # Chars
@@ -24,13 +25,11 @@ STRINGMAX=16 #MAX string length
 FONTFILE="dos.ttf"
 FONTSIZE=40
 
-
-
 # Placement
 STEPRIGHT = 15 # How far from the left border to draw text
 STEPDOWN = 15 # How far from the top border to draw text
 LINESTEP = FONTSIZE # How much pixels to go down for each new line
-OFFSET = 2 # How much pixels to offset the shadow (x-2, y+2)
+OFFSET = 2 # How much pixels to offset the shadow (if OFFSET is 2: STEPRIGHT-2, STEPDOWN+2)
 
 # Factor
 FONTSIZEFACTOR=1.6 # OPTIONAL: How tall is a large character in pixels in comparison to FONTSIZE .
@@ -96,7 +95,8 @@ def AddText(path):
             else:
                 StagedText = GenerateRandomString(len)
             
-            d.text((sr-2,sd+2), StagedText, 'black', FONT)
+            if DrawShadow:
+                d.text((sr-2,sd+2), StagedText, 'black', FONT)
             d.text((sr,sd), StagedText, 'white', FONT)
             sd+=LINESTEP
             i+=1
