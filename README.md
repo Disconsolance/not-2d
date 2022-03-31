@@ -4,14 +4,18 @@
 Pseudocomputer gibberish for gifs, inspired by 00s glitchcore
 
 
-
+## Table of contents
+- [Demo](#demo)
+- [Installation](#installation)
+- [Configuration](#config)
+- [Usage](#usage)
 
 ## Demo
 
-Input
+Input \
 ![input](https://github.com/PastelNightmare/not-2d/blob/master/demo/in.gif) 
 
-Output
+Output \
 ![output](https://github.com/PastelNightmare/not-2d/blob/master/demo/out.gif)
 
 ## Installation
