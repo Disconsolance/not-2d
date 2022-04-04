@@ -1,4 +1,4 @@
-from script.bits import AddText
-from script.config import IMG
+from app.bits import AddText
+from app.config import IMG
 
 AddText(IMG)

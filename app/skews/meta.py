@@ -1,4 +1,4 @@
-from script import config
+from app import config
 
 FONT = config.FONTFILE
 HEX="ABCDEF0123456789"

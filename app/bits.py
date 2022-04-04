@@ -2,8 +2,8 @@ import random
 import io
 import os
 from PIL import Image, ImageDraw, ImageSequence, ImageFont
-from script.config import *
-from script.skews import skews
+from app.config import *
+from app.skews import skews
 
 def ConfigCheck(img):
     w,h = img.size
@@ -27,7 +27,6 @@ def ConfigCheck(img):
 
 
 def AddText(path):
-    FONT = ImageFont.truetype(f"script/files/{FONTFILE}", FONTSIZE, encoding="unic")
     frames = []
     im = Image.open(f"in/{path}")
     ConfigCheck(im)

@@ -1,5 +1,5 @@
 # TODO: At least two fucking skews
-from script.skews import meta
+from app.skews import meta
 import random
 from PIL import Image, ImageDraw, ImageSequence, ImageFont
 
@@ -13,7 +13,7 @@ class Pointer():
 
     def __init__(self, FONTSIZE, xpos, ypos, FONT=meta.FONT, DrawShadow=meta.DRAWSHADOW, MINLEN=meta.MINSIZE, MAXLEN=meta.MAXSIZE, STRING=meta.HEX):
         self.FONTSIZE=FONTSIZE
-        self.FONT = ImageFont.truetype(f"script/files/{FONT}", FONTSIZE, encoding="unic")
+        self.FONT = ImageFont.truetype(f"app/files/{FONT}.ttf", FONTSIZE, encoding="unic")
         self.DRAWSHADOW = DrawShadow
         self.X = xpos
         self.Y = ypos
@@ -49,7 +49,7 @@ class RandomString():
 
     def __init__(self, FONTSIZE, xpos, ypos, FONT=meta.FONT, DrawShadow=meta.DRAWSHADOW, MINLEN=meta.MINSIZE, MAXLEN=meta.MAXSIZE, STRING=meta.GENSTR):
         self.FONTSIZE=FONTSIZE
-        self.FONT = ImageFont.truetype(f"script/files/{FONT}", FONTSIZE, encoding="unic")
+        self.FONT = ImageFont.truetype(f"app/files/{FONT}.ttf", FONTSIZE, encoding="unic")
         self.DRAWSHADOW = DrawShadow
         self.X = xpos
         self.Y = ypos
