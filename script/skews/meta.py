@@ -1,0 +1,8 @@
+from script import config
+
+FONT = config.FONTFILE
+HEX="ABCDEF0123456789"
+GENSTR="ABCDEFabcdef01234567890!/\\@#$%^&*()-=_+;."
+MINSIZE=1
+MAXSIZE=8
+DRAWSHADOW=True

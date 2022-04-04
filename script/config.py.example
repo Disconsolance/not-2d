@@ -1,0 +1,33 @@
+import string
+# Input
+IMG = "example.gif" # input gif
+
+# Generation
+GenPointer=True # TO generate a random string from POINTERCHARLIST, rather than STRINGCHARLIST
+DrawShadow=True
+LINES=1
+
+# Chars
+STRINGCHARLIST = "%$!?/.=+-@:&\\" + string.hexdigits #chars, picks random from string
+POINTERCHARLIST = string.digits + "ABCDEF"
+
+# Text
+STRINGMIN=3 
+STRINGMAX=16 #MAX string length
+
+# Font
+FONTFILE="dos.ttf"
+FONTSIZE=40
+
+# Placement
+STEPRIGHT = 15 # How far from the left border to draw text
+STEPDOWN = 15 # How far from the top border to draw text
+LINESTEP = FONTSIZE # How much pixels to go down for each new line
+OFFSET = 2 # How much pixels to offset the shadow (if OFFSET is 2: STEPRIGHT-2, STEPDOWN+2)
+
+# Factor
+FONTSIZEFACTOR=1.6 # OPTIONAL: How tall is a large character in pixels in comparison to FONTSIZE .
+                   # (e.g. if "8" is 25 pixels tall with a font size of 40: 40/25 = 1.6). 
+                   # This is (not neccesarily) needed for config checks.
+
+LINESTEPFACTOR=2.6 # True line step distance (LINESTEP divided by actual distance between lines in pixels)
