@@ -4,6 +4,7 @@ import os
 from PIL import Image, ImageDraw, ImageSequence, ImageFont
 from app.config import *
 from app.skews import skews
+from app.not2dscript import Parser
 
 def ConfigCheck(img):
     w,h = img.size
@@ -22,42 +23,45 @@ def ConfigCheck(img):
     if Fatal == True:
         exit(1)
     
-
-
-
-
 def AddText(path):
     frames = []
     im = Image.open(f"in/{path}")
     ConfigCheck(im)
     for frame in ImageSequence.Iterator(im):
-        sr=STEPRIGHT
-        sd=STEPDOWN
+        print("yikes")
 
-        d = ImageDraw.Draw(frame)
-
-        #i = 0
-        #while i < LINES:
-            # len = random.randrange(STRINGMIN,STRINGMAX)
-
-            # if GenPointer:
-            #     StagedText = GenerateRandomPointer(len)
-            # else:
-            #     StagedText = GenerateRandomString(len)
-            
-            # if DrawShadow:
-            #     d.text((sr-2,sd+2), StagedText, 'black', FONT)
-            # d.text((sr,sd), StagedText, 'white', FONT)
-            # sd+=LINESTEP
-            # i+=1
-        P = skews.Pointer(14, 20, 20)
-        ST = skews.RandomString(47, 88, 140)
-        P.Draw(d)
-        ST.Draw(d)
         
-        del d
-        b = io.BytesIO()
-        frame.save(b, format="GIF")
-        frame = Image.open(b)
-        frames.append(frame)
-    frames[0].save(f'out/42bits-{IMG}', save_all=True, append_images=frames[1:])
+        # sr=STEPRIGHT
+        # sd=STEPDOWN
+
+        # d = ImageDraw.Draw(frame)
+
+        # #i = 0
+        # #while i < LINES:
+        #     # len = random.randrange(STRINGMIN,STRINGMAX)
+
+        #     # if GenPointer:
+        #     #     StagedText = GenerateRandomPointer(len)
+        #     # else:
+        #     #     StagedText = GenerateRandomString(len)
+            
+        #     # if DrawShadow:
+        #     #     d.text((sr-2,sd+2), StagedText, 'black', FONT)
+        #     # d.text((sr,sd), StagedText, 'white', FONT)
+        #     # sd+=LINESTEP
+        #     # i+=1
+        # P = skews.Pointer(14, 20, 20)
+        # ST = skews.RandomString(47, 88, 140)
+        # P.Draw(d)
+        # ST.Draw(d)
+        
+        # del d
+        # b = io.BytesIO()
+        # frame.save(b, format="GIF")
+        # frame = Image.open(b)
+        # frames.append(frame)
+    #frames[0].save(f'out/42bits-{IMG}', save_all=True, append_images=frames[1:])
+
+def ParseTest(path):
+    Frames = Parser.InitList(path)
+    print(Frames)

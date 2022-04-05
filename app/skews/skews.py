@@ -1,9 +1,9 @@
-# TODO: At least two fucking skews
+from app.not2dscript.Order import Order
 from app.skews import meta
 import random
-from PIL import Image, ImageDraw, ImageSequence, ImageFont
+from PIL import Image, ImageDraw, ImageSequence, ImageFont, ImageOps
 
-class Pointer():
+class Pointer:
     DRAWSHADOW=False
     FONTSIZE=0
     LEN = 0
@@ -11,14 +11,23 @@ class Pointer():
     X=0
     Y=0
 
-    def __init__(self, FONTSIZE, xpos, ypos, FONT=meta.FONT, DrawShadow=meta.DRAWSHADOW, MINLEN=meta.MINSIZE, MAXLEN=meta.MAXSIZE, STRING=meta.HEX):
-        self.FONTSIZE=FONTSIZE
-        self.FONT = ImageFont.truetype(f"app/files/{FONT}.ttf", FONTSIZE, encoding="unic")
-        self.DRAWSHADOW = DrawShadow
-        self.X = xpos
-        self.Y = ypos
-        self.LEN = random.randrange(MINLEN, MAXLEN)
-        self.STRING = STRING
+    # def __init__(self, FONTSIZE, xpos, ypos, FONT=meta.FONT, DrawShadow=meta.DRAWSHADOW, MINLEN=meta.MINSIZE, MAXLEN=meta.MAXSIZE, STRING=meta.HEX):
+    #     self.FONTSIZE=FONTSIZE
+    #     self.FONT = ImageFont.truetype(f"app/files/{FONT}.ttf", FONTSIZE, encoding="unic")
+    #     self.DRAWSHADOW = DrawShadow
+    #     self.X = xpos
+    #     self.Y = ypos
+    #     self.LEN = random.randrange(MINLEN, MAXLEN)
+    #     self.STRING = STRING
+    
+    def __init__(self, ord: Order):
+        self.FONTSIZE = ord.FONTSIZE 
+        self.FONT = ImageFont.truetype(f"app/files/{ord.FONT}.ttf", self.FONTSIZE, encoding="unic")
+        self.DRAWSHADOW = ord.DRAWSHADOW
+        self.X = ord.X
+        self.Y = ord.Y
+        self.LEN = random.randrange(ord.MINLEN,ord.MAXLEN)
+        self.STRING = ord.STRING
     
     def GenerateRandomPointer(self):
         # Replace (1,8) with (self.MINLEN,self.MAXLEN) to remove the limit on pointer size
@@ -39,7 +48,7 @@ class Pointer():
 
         return frame
     
-class RandomString():
+class RandomString:
     DRAWSHADOW=False
     FONTSIZE=0
     LEN = 0
@@ -47,14 +56,23 @@ class RandomString():
     X=0
     Y=0
 
-    def __init__(self, FONTSIZE, xpos, ypos, FONT=meta.FONT, DrawShadow=meta.DRAWSHADOW, MINLEN=meta.MINSIZE, MAXLEN=meta.MAXSIZE, STRING=meta.GENSTR):
-        self.FONTSIZE=FONTSIZE
-        self.FONT = ImageFont.truetype(f"app/files/{FONT}.ttf", FONTSIZE, encoding="unic")
-        self.DRAWSHADOW = DrawShadow
-        self.X = xpos
-        self.Y = ypos
-        self.LEN = random.randrange(MINLEN, MAXLEN)
-        self.STRING = STRING
+    # def __init__(self, FONTSIZE, xpos, ypos, FONT=meta.FONT, DrawShadow=meta.DRAWSHADOW, MINLEN=meta.MINSIZE, MAXLEN=meta.MAXSIZE, STRING=meta.GENSTR):
+        # self.FONTSIZE=FONTSIZE
+        # self.FONT = ImageFont.truetype(f"app/files/{FONT}.ttf", FONTSIZE, encoding="unic")
+        # self.DRAWSHADOW = DrawShadow
+        # self.X = xpos
+        # self.Y = ypos
+        # self.LEN = random.randrange(MINLEN, MAXLEN)
+        # self.STRING = STRING
+    
+    def __init__(self, ord: Order):
+        self.FONTSIZE = ord.FONTSIZE 
+        self.FONT = ImageFont.truetype(f"app/files/{ord.FONT}.ttf", self.FONTSIZE, encoding="unic")
+        self.DRAWSHADOW = ord.DRAWSHADOW
+        self.X = ord.X
+        self.Y = ord.Y
+        self.LEN = random.randrange(ord.MINLEN,ord.MAXLEN)
+        self.STRING = ord.STRING
     
     def GenerateRandomPointer(self):
         str = ""
